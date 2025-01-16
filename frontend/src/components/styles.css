@@ -1,0 +1,165 @@
+/* Reset and Font */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e293b, #64748b);
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    position: relative; /* Ensures the pseudo-element stays within the body */
+}
+
+/* Background Animation */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
+    z-index: 0; /* Push the background behind the content */
+    animation: rotate 15s linear infinite;
+    opacity: 0.5;
+}
+
+/* Container Styling */
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* Ensures the app container stays above the background */
+    z-index: 1; /* Brings the app container above the pseudo-element */
+}
+
+/* Card Styling */
+.card {
+    background: #0f172a;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Title Styling */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #f8fafc;
+    white-space: nowrap; /* Ensure the text stays on one line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Input Field Styling */
+.input-field {
+    width: calc(100% - 20px); /* Ensures the input fits inside the card */
+    max-width: 360px;
+    padding: 14px 16px;
+    margin-bottom: 25px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #1e293b;
+    color: #ffffff;
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+    background-color: #334155;
+}
+
+/* Button Styling */
+.download-button {
+    background-color: #3b82f6;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: calc(100% - 20px);
+    max-width: 360px; /* Match the input field's width */
+}
+
+.download-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-3px);
+}
+
+.download-button:active {
+    transform: scale(0.95);
+}
+
+/* Error Message Styling */
+.error-message {
+    color: #f87171;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Success Link Styling */
+.success-link {
+    display: block;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #3b82f6;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.success-link:hover {
+    color: #2563eb;
+}
+
+/* Animations */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .download-button {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,18 @@
+# Ignore node_modules directories
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Ignore environment variables
+.env
+
+# Ignore log files
+*.log
+
+# Ignore OS and editor-specific files
+.DS_Store
+*.swp
+*.swo
+
+# Ignore temporary build files (optional)
+frontend/build/
