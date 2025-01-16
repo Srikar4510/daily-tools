@@ -16,7 +16,7 @@ const TwitterDownloader = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/twitter/download', { url });
+            const response = await axios.post('https://daily-tools-vrv1.onrender.com/api/twitter/download', { url });
             setVideoUrl(response.data.videoUrl);
         } catch (err) {
             setError('Failed to fetch video. Please try again.');

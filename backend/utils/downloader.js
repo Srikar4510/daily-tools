@@ -14,7 +14,7 @@ const extractVideoUrl = async (url) => {
             throw new Error('Invalid Tweet URL');
         }
 
-        const bearerToken = process.env.BEARER_TOKEN||"AAAAAAAAAAAAAAAAAAAAAJ3ayAEAAAAABnUcCxjarnJXF1gDHiQ4y%2BkUxnw%3DljgR22dYFBdhGtw3yigqGmaaVaQnBk08Ec65jq2KtPCRRqVeNh";
+        const bearerToken = process.env.BEARER_TOKEN;
 
         // Fetch tweet details using Twitter API
         const response = await axios.get(`https://api.twitter.com/2/tweets/${tweetId}?expansions=attachments.media_keys&media.fields=type,url,variants`, {

@@ -7,6 +7,7 @@ const twitterRoutes = require('./routes/twitterRoutes');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+require('dotenv').config();
 
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, '../frontend/build')));
