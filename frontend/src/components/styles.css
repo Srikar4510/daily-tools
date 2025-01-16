@@ -2,17 +2,18 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1e293b, #64748b);
     min-height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    position: relative; /* Ensures the pseudo-element stays within the body */
+    position: relative;
+    /* Dark gradient background */
+    background: linear-gradient(135deg, #1e293b 0%, #64748b 100%);
 }
 
-/* Background Animation */
+/* Animated radial background overlay */
 body::before {
     content: '';
     position: absolute;
@@ -20,10 +21,11 @@ body::before {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
-    z-index: 0; /* Push the background behind the content */
-    animation: rotate 15s linear infinite;
-    opacity: 0.5;
+    /* Soft radial highlight */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 60%);
+    z-index: 0; 
+    animation: rotate 25s linear infinite; 
+    opacity: 0.3;
 }
 
 /* Container Styling */
@@ -32,21 +34,31 @@ body::before {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    position: relative; /* Ensures the app container stays above the background */
-    z-index: 1; /* Brings the app container above the pseudo-element */
+    position: relative;
+    z-index: 1;
 }
 
-/* Card Styling */
+/* Card Styling (Glassmorphism) */
 .card {
-    background: #0f172a;
-    padding: 40px 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
+    position: relative;
     width: 100%;
     max-width: 400px;
+    padding: 40px 30px;
+    
+    /* Glass-like background */
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    
+    /* Slide-down + fade-in animation */
     animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -56,53 +68,63 @@ body::before {
     font-weight: bold;
     margin-bottom: 20px;
     color: #f8fafc;
-    white-space: nowrap; /* Ensure the text stays on one line */
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* Subtle text shadow for glow */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Input Field Styling */
 .input-field {
-    width: calc(100% - 20px); /* Ensures the input fits inside the card */
+    width: calc(100% - 20px);
     max-width: 360px;
     padding: 14px 16px;
     margin-bottom: 25px;
-    border: 1px solid #334155;
+    border: none;
     border-radius: 8px;
     font-size: 1rem;
-    background: #1e293b;
+    background: rgba(30, 41, 59, 0.8);
     color: #ffffff;
     transition: box-shadow 0.3s, background-color 0.3s;
 }
 
 .input-field:focus {
     outline: none;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
-    background-color: #334155;
+    background-color: rgba(51, 65, 85, 0.85);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
 }
 
 /* Button Styling */
 .download-button {
-    background-color: #3b82f6;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
+    position: relative;
+    width: calc(100% - 20px);
+    max-width: 360px;
     padding: 12px 20px;
+    margin: 0 auto;
+    cursor: pointer;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    width: calc(100% - 20px);
-    max-width: 360px; /* Match the input field's width */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    
+    /* Gradient background */
+    background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+    
+    /* Glow effect on hover/active */
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    transition: transform 0.2s, box-shadow 0.3s;
 }
 
 .download-button:hover {
-    background-color: #2563eb;
     transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.6);
 }
 
 .download-button:active {
     transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
 }
 
 /* Error Message Styling */
@@ -110,39 +132,46 @@ body::before {
     color: #f87171;
     margin-top: 15px;
     font-size: 0.9rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Success Link Styling */
 .success-link {
-    display: block;
+    display: inline-block;
     margin-top: 20px;
     font-size: 1rem;
     color: #3b82f6;
     font-weight: bold;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.2s;
+    position: relative;
 }
 
 .success-link:hover {
     color: #2563eb;
+    transform: translateY(-3px);
 }
 
 /* Animations */
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
+    0% {
+        transform: rotate(0deg) scale(1);
     }
-    to {
-        transform: rotate(360deg);
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
     }
 }
 
 @keyframes fadeIn {
-    from {
+    0% {
         opacity: 0;
         transform: translateY(-20px);
     }
-    to {
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
